@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3261e2;
+      --secondary: #ebd2d7;
+      --dark: #5c96e2;
+      --light: #f8f8f8;
+      --accent: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-image: url('https://i.pinimg.com/736x/fc/11/99/fc1199f40a5a13ba62d82e6bf9132f38.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Хар тунгалаг давхарга */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(52, 79, 138, 0.5);
+      z-index: -1;
+    }
+
+    h1 {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      text-shadow: 2px 2px 10px black;
+      animation: glow 2s infinite alternate;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px pink; }
+      to { text-shadow: 0 0 20px red, 0 0 30px hotpink; }
+    }
+
+    /* Hero Image */
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-container img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+
+    .hero-container:hover .play-btn {
+      opacity: 1;
+    }
+
+    .play-btn::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 20px solid var(--dark);
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 4px;
+    }
+
+    /* Side images */
+    .side-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px;
+      margin: 3rem auto;
+      font-size: 1.4rem;
+      color: #f1db5d;
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+      opacity: 0.95;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      animation: fadeIn 1s ease-in-out;
+      backdrop-filter: blur(4px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-block
+    }
+
+    .side {
+      background: rgba(241, 103, 103, 0.15);
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--light);
+    }
+
+    .side img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    /* Letter */
+    .letter-btn {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: #222;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 1rem;
+    }
+
+    .letter-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 139, 0.4);
+    }
+
+    .letter {
+      display: none;
+      background: rgba(112, 151, 224, 0.95);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 2rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .letter.show {
+      display: block;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="Hamtdaa_baihdaa.mp3 " type="audio/mpeg" />
+  </audio>
+
+  <h1>🎉🥳Happy Birthday😊❤️</h1>
+
+  <div class="hero-container">
+    <img class="hero" src="marlaa.jpg" alt="Us">
+    <div class="play-btn" onclick="startMusic()"></div>
+  </div>
+
+  <!-- Side Images -->
+  <div class="side-images">
+
+    <div class="side">
+      <img src="images/Young.png" alt="My girl is a dentist 🎀">
+      <p>I'm happy to do this web. You're gorgeous, have the prettiest smile, cutest laugh, and perfect eyes, basically just perfect.</p>
+      <p>She has never stopped putting a smile on my face.</p>
+      <p>Maybe i'm not good enough for you and not the best person in your life, but i love you with all my heart</p>
+      <p>So i promise i will be better person for you and this world you are my world 🤍🍀</p>
+
+    </div>
+
+  <!-- Read Me -->
+  <button class="letter-btn" onclick="showLetter()">💌 Read</button>
+
+  <div class="letter" id="letter">
+    <h2>2025.09.14</h2>
+    <p>
+      2025 оны 9-р сарын 19
+      Энэ өдөpт л зориулаад хэд хоногийн өмнөөс бэлдэж, чамд зориулан бэлэг авч, өөрийн гараар хийж буй жижиг зүйлс болон, бичиж буй захиа болгондоo сэтгэлээ шингээн надад өөрт минь ч үнэхээр сайхан мэдрэмж төрүүлж байна.
+      Чиний инээмсэглэл, сэтгэл хангалуун байдал, жаргалтай төрх чинь миний доторх бүх хүнд хэцүү асуудал, сэтгэлийн зовнилыг минь арилгаж өгдөг. Тиймээс л чамайг харах бүртээ надад илүү гэрэлтэй санагддаг.
+      Чи бол үнэхээр хүчирхэг, ухаалаг, үзэсгэлэнт охин. Би үнэхээр азтай хүн, учир нь надад чи байдаг.</p>
+      <p>Надтай байдагт баярлалаа. Би чамд хайртай учраас чи надад хэрэгтэй.
+    
+    <img src="marlaabid2.jpeg" 
+    alt="Small Gift" 
+    style="width:300px; display:block; margin: 1rem auto; border: radius 30px;">
+  </div>
+
+  <script>
+  window.addEventListener('load', () => {
+    const audio = document.getElementById('bgMusic');
+    audio.play().catch(() => {
+      console.log("Хэрэглэгчийн interaction шаардлагатай байна.");
+    });
+  });
+
+  function showLetter() {
+    const letter = document.getElementById('letter');
+    letter.classList.add('show');
+    letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createHearts, i * 150);
+    }
+  }
+
+  function createHearts() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+    heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+  }
+    function showLetter() {
+      letter.classList.add('show');
+      letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHearts, i * 150);
+      }
+    }
+  </script>
+</body>
+</html>
